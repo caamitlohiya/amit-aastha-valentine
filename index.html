@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amit ❤️ Aastha – Our Story</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff6f91, #ff9671);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.card{
+    background: rgba(255,255,255,0.15);
+    width:360px;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 12px 35px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+img{
+    width:100%;
+    border-radius:16px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:16px;
+    line-height:1.5;
+}
+
+.buttons{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+button{
+    background:white;
+    color:#ff4f7a;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:0.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <img id="photo" src="1_proposal.jpg">
+    <h1 id="title">The Proposal 💍</h1>
+    <p id="quote">
+        It all started with a simple question  
+        and a lifetime answer ❤️
+    </p>
+
+    <div class="buttons">
+        <button onclick="prev()" id="back" disabled>⬅ Back</button>
+        <button onclick="next()" id="next">Next ➡</button>
+    </div>
+</div>
+
+<script>
+let step = 0;
+
+const story = [
+{
+    img:"1_proposal.jpg",
+    title:"The Proposal 💍",
+    quote:"It all started with a simple question and a lifetime answer ❤️"
+},
+{
+    img:"2_engagement.jpg",
+    title:"The Promise 🤍",
+    quote:"Two hearts promised forever, without knowing how beautiful forever would be ✨"
+},
+{
+    img:"3_marriage.jpg",
+    title:"The Marriage 🌸",
+    quote:"Not just husband and wife, but partners for every life ahead 💞"
+},
+{
+    img:"4_travel.jpg",
+    title:"The Journey ✈️",
+    quote:"Different places, same hands, same love 🧳❤️"
+},
+{
+    img:"5_today.jpg",
+    title:"Till Today & Always ❤️",
+    quote:"Still choosing each other, every single day 💘"
+}
+];
+
+function update(){
+    document.getElementById("photo").src = story[step].img;
+    document.getElementById("title").innerText = story[step].title;
+    document.getElementById("quote").innerText = story[step].quote;
+
+    document.getElementById("back").disabled = step === 0;
+    document.getElementById("next").disabled = step === story.length - 1;
+}
+
+function next(){
+    if(step < story.length - 1){
+        step++;
+        update();
+    }
+}
+
+function prev(){
+    if(step > 0){
+        step--;
+        update();
+    }
+}
+</script>
+
+</body>
+</html>
